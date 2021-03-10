@@ -48,6 +48,12 @@ class TradingPairFetcher:
             args = conn_setting.add_domain_parameter(args)
             safe_ensure_future(self.call_fetch_pairs(module.fetch_trading_pairs(**args), conn_setting.name))
 
+        results = await safe_gather(*tasks, return_exceptions=True)
+        self.trading_pairs = dict(zip(fetched_connectors, results))
+        # In case trading pair fetching returned timeout, using empty list
+        for connector, result in self.trading_pairs.items():
+            if isinstance(result, asyncio.TimeoutError):
+                self.trading_pairs[connector] = []
         self.ready = True
 
     async def call_fetch_pairs(self, fetch_fn, exchange_name):
