@@ -201,3 +201,6 @@ global_token:
 
 # A symbol for the global token, e.g. $, €
 global_token_symbol:
+
+# mcdex trading pair to symbol settings
+mcdex_trading_pair_2_symbol:

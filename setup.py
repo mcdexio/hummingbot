@@ -72,6 +72,7 @@ def main():
         "hummingbot.connector.exchange.hitbtc",
         "hummingbot.connector.derivative",
         "hummingbot.connector.derivative.binance_perpetual",
+        "hummingbot.connector.derivative.mcdex",
         "hummingbot.script",
         "hummingbot.strategy",
         "hummingbot.strategy.amm_arb",

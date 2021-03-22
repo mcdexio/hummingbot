@@ -355,6 +355,14 @@ main_config_map = {
                   required_if=lambda: False,
                   on_validated=global_token_symbol_on_validated,
                   default="$"),
+    "mcdex_trading_pair_2_symbol":
+        ConfigVar(key="mcdex_trading_pair_2_symbol",
+                  prompt="Enter mcdex trading pair to symbol settings (Input must be valid json: "
+                         "e.g. {\"ETH-USDC\": \"00001\"}) >>> ",
+                  required_if=lambda: using_exchange("mcdex"),
+                  type_str="json",
+                  ),
+
 }
 
 global_config_map = {**key_config_map, **main_config_map}

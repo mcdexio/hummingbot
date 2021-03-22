@@ -240,10 +240,12 @@ class HummingbotApplication(*commands):
                         if key in conn_setting.config_keys}
                 init_params = conn_setting.conn_init_parameters(keys)
                 init_params.update(trading_pairs=trading_pairs, trading_required=self._trading_required)
+                if connector_name == "mcdex":
+                    init_params.update(trading_pair_2_symbol=global_config_map.get("mcdex_trading_pair_2_symbol").value)
                 if conn_setting.use_ethereum_wallet:
                     ethereum_rpc_url = global_config_map.get("ethereum_rpc_url").value
                     # Todo: Hard coded this execption for now until we figure out how to handle all ethereum connectors.
-                    if connector_name in ["balancer", "uniswap", "perpetual_finance"]:
+                    if connector_name in ["balancer", "uniswap", "perpetual_finance", "mcdex"]:
                         private_key = get_eth_wallet_private_key()
                         init_params.update(wallet_private_key=private_key, ethereum_rpc_url=ethereum_rpc_url)
                     else:
