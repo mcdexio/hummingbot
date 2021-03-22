@@ -332,6 +332,14 @@ main_config_map = {
                   required_if=lambda: False,
                   default="HARD-USDT,HARD-BTC,XEM-ETH,XEM-BTC,ALGO-USDT,ALGO-BTC,COTI-BNB,COTI-USDT,COTI-BTC,MFT-BNB,"
                           "MFT-ETH,MFT-USDT,RLC-ETH,RLC-BTC,RLC-USDT"),
+    "mcdex_trading_pair_2_symbol":
+        ConfigVar(key="mcdex_trading_pair_2_symbol",
+                  prompt="Enter mcdex trading pair to symbol settings (Input must be valid json: "
+                         "e.g. {\"ETH-USDC\": \"00001\"}) >>> ",
+                  required_if=lambda: using_exchange("mcdex"),
+                  type_str="json",
+                  ),
+
 }
 
 global_config_map = {**key_config_map, **main_config_map}

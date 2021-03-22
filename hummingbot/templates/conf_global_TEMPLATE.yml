@@ -186,3 +186,5 @@ heartbeat_enabled:
 heartbeat_interval_min:
 # a list of binance markets (for trades/pnl reporting) separated by ',' e.g. RLC-USDT,RLC-BTC
 binance_markets:
+# mcdex trading pair to symbol settings
+mcdex_trading_pair_2_symbol:
