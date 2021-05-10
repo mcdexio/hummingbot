@@ -48,8 +48,8 @@ class McdexDerivative(DerivativeBase):
     McdexConnector connects with mcdex gateway APIs and provides pricing, user account tracking and trading
     functionality.
     """
-    POLL_INTERVAL = 1.0
-    UPDATE_ACCOUNT_INTERVAL = 5.0
+    POLL_INTERVAL = 10.0
+    UPDATE_ACCOUNT_INTERVAL = 10.0
 
     @classmethod
     def logger(cls) -> HummingbotLogger:

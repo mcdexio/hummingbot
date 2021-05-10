@@ -46,7 +46,7 @@ class UniswapConnector(ConnectorBase):
     functionality.
     """
     API_CALL_TIMEOUT = 10.0
-    POLL_INTERVAL = 1.0
+    POLL_INTERVAL = 10.0
     UPDATE_BALANCE_INTERVAL = 30.0
 
     @classmethod

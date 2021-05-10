@@ -171,7 +171,7 @@ def get_erc20_token_addresses() -> Dict[str, List]:
     address_file_path = TOKEN_ADDRESSES_FILE_PATH
     token_list = {}
 
-    resp = requests.get(token_list_url, timeout=1)
+    resp = requests.get(token_list_url, timeout=3)
     decoded_resp = resp.json()
 
     for token in decoded_resp["tokens"]:
@@ -183,6 +183,8 @@ def get_erc20_token_addresses() -> Dict[str, List]:
             for token, address in overrides.items():
                 override_token = token_list.get(token, [address, 18])
                 token_list[token] = [address, override_token[1]]
+                if token == "USDC":
+                    token_list[token][1] = 6
     except FileNotFoundError:
         # create override file for first run w docker
         with open(address_file_path, "w+") as f:
